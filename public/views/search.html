@@ -1,0 +1,16 @@
+<div class="search" ng-controller="searchCtrl">
+  <div class="search-container">
+    <div class="cardPage">
+      <div class="card-checkbox" ng-repeat="user in users">
+          <a class="card" href="#/perso/{{user.name}}/{{ user.lastname}}">
+            <div class="topCard">
+                <img src="{{user.photo}}" alt="{{user.name}}"></img>
+            </div>
+            <div class="botCard">
+              <p>{{user.name}} {{user.lastname}}</p>
+            </div>
+          </a>
+      </div>
+    </div>
+  </div>
+</div>

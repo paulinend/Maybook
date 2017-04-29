@@ -1,0 +1,19 @@
+.homepage {
+height: 500px;
+display: flex;
+justify-content: center;
+align-items: center;
+flex-direction: column;
+}
+.homepage h2, .homepage h5 {
+  color: #fff;
+}
+
+.homepage a button {
+    background: #22d2ad;
+    font-weight: 900;
+    padding: 15px;
+    width: 130px;
+    text-align: center;
+    color: #fff;
+}

@@ -1,0 +1,22 @@
+{
+  "name": "laboite",
+  "homepage": "https://github.com/paulinend/Revisions",
+  "authors": [
+    "Pauline Ndiaye <aysha.pauline@gmail.com>"
+  ],
+  "description": "boite de recherche de mannequins",
+  "main": "index.html",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular-route": "^1.6.4",
+    "angular": "^1.6.4",
+    "bootstrap": "^3.3.7"
+  }
+}

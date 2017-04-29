@@ -1,0 +1,17 @@
+<div class="user-profile-container" ng-controller="persoCtrl">
+  <div class="profile-top">
+    <img src="{{user.photo}}" alt="{{user.name}}">
+    <div class="infos-user">
+      <h1>{{user.name}} {{user.lastname}} <i class="{{user.icon}}" aria-hidden="true"></i></h1>
+      <p>Âge: <span>{{user.age}} ans</span></p>
+      <p>Taille: <span>{{user.taille}}cm</span></p>
+      <p>Poids: <span>{{user.poids}}kg</span></p>
+      <p>Pointure: <span>{{user.pointure}}</span></p>
+      <p>Couleur des yeux: <span>{{user.eyes}}</span></p>
+      <p>Couleur des cheveux: <span>{{user.hairs}}</span></p>
+      <p>Origine Ethnique: <span>{{user.ethnicity}}</span></p>
+      <p>Rentrer en contact avec {{user.name}} <i class="fa fa-envelope-o" aria-hidden="true"></i></p>
+      <i class="fa fa-chevron-down fa-3x" aria-hidden="true"></i>
+    </div>
+  </div>
+</div>
