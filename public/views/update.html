@@ -1,0 +1,150 @@
+<div class="connexion-page">
+  <div class="connexion-container">
+    <div class="connexion">
+      <div class="form-group">
+        <div class="form">
+          <label for="example-text-input">Prénom:</label>
+          <input type="text" ng-model="mannequins.name">
+          <label for="example-text-input">Nom De Famille:</label>
+          <input type="text" ng-model="mannequins.lastname">
+          <form>
+        <div class="form flex">
+          <label for="sel1">Sexe</label>
+          <select class="form-control" id="sel1" ng-model="mannequins.sexe">
+            <option>Peu importe</option>
+            <option>Féminin</option>
+            <option>Masculin</option>
+          </select>
+        </div>
+        <div class="form flex">
+          <label for="sel1">Âge:</label>
+          <select class="form-control" id="sel1" ng-model="mannequins.age">
+            <option>Peu importe</option>
+            <option>De 16 à 20 ans</option>
+            <option>De 20 à 25 ans</option>
+            <option>De 26 à 30 ans</option>
+            <option>De 31 à 40 ans</option>
+            <option>De 40 à 50 ans</option>
+            <option>Plus de 50 ans</option>
+          </select>
+        </div>
+        <div class="form flex">
+          <label for="sel1">Taille:</label>
+          <select class="form-control" id="sel1" ng-model="mannequins.taille">
+            <option>Peu importe</option>
+            <option>moins de 130cm</option>
+            <option>De 130cm à 150cm</option>
+            <option>De 151cm à 160cm</option>
+            <option>De 161cm à 170cm</option>
+            <option>De 171cm à 180cm</option>
+            <option>De 181cm à 190cm</option>
+            <option>De 191cm à 200cm</option>
+            <option>Plus de 200cm</option>
+          </select>
+        </div>
+        <div class="form flex">
+          <label for="sel1">Poids:</label>
+          <select class="form-control" id="sel1" ng-model="mannequins.poids">
+            <option>Peu importe</option>
+            <option>moins de 30kg</option>
+            <option>De 31kg à 40kg</option>
+            <option>De 51kg à 60kg</option>
+            <option>De 61kg à 70kg</option>
+            <option>De 71kg à 80kg</option>
+            <option>De 81kg à 90kg</option>
+            <option>De 91kg à 100kg</option>
+            <option>De 101kg à 110kg</option>
+            <option>De 110kg à 120kg</option>
+            <option>De 120kg à 130kg</option>
+            <option>Plus de 140kg</option>
+          </select>
+        </div>
+        <div class="form flex">
+          <label for="sel1">Pointure</label>
+          <select class="form-control" id="sel1" ng-model="mannequins.pointure">
+            <option>Peu importe</option>
+            <option>35</option>
+            <option>36</option>
+            <option>37</option>
+            <option>38</option>
+            <option>39</option>
+            <option>40</option>
+            <option>41</option>
+            <option>42</option>
+            <option>43</option>
+            <option>44</option>
+            <option>45</option>
+            <option>45+</option>
+          </select>
+        </div>
+        <div class="form flex">
+          <label for="sel1">Couleur des yeux:</label>
+          <select class="form-control" id="sel1" ng-model="mannequins.eyes">
+            <option>Peu importe</option>
+            <option>Noirs</option>
+            <option>Marrons</option>
+            <option>Bleus</option>
+            <option>Verts</option>
+          </select>
+        </div>
+        <div class="form flex">
+          <label for="sel1">Cheveux:</label>
+          <select class="form-control" id="sel1" ng-model="mannequins.hairs">
+            <option>Peu importe</option>
+            <option>Bruns</option>
+            <option>Chatains</option>
+            <option>Blonds</option>
+            <option>Roux</option>
+            <option>Gris</option>
+            <option>Blancs</option>
+            <option>Chauves</option>
+            <option>Colorés</option>
+          </select>
+        </div>
+        <div class="form flex">
+          <label for="sel1">Origine ethnique:</label>
+          <select class="form-control" id="sel1" ng-model="mannequins.ethnicity">
+            <option>Peu importe</option>
+            <option>Afro-caraibéene</option>
+            <option>Européene</option>
+            <option>Méditénéréen</option>
+            <option>Arabe</option>
+            <option>Asiatique</option>
+            <option>Indien</option>
+            <option>Autre</option>
+          </select>
+        </div>
+        <div class="form flex">
+          <label for="sel1">Experience:</label>
+          <select class="form-control" id="sel1" ng-model="mannequins.xp">
+            <option>Débutant</option>
+            <option>Amateur</option>
+            <option>Semi Pro</option>
+            <option>Pro</option>
+            <option>Passionné</option>
+            <option>Expérimenté</option>
+          </select>
+        </div>
+        <div class="form flex">
+          <label for="sel1">Spécialité photos:</label>
+          <select class="form-control" id="sel1">
+            <option>Glamour</option>
+            <option>Mode</option>
+            <option>Portrait</option>
+            <option>Sport</option>
+            <option>Nature</option>
+            <option>Mariage</option>
+            <option>Abstrait</option>
+            <option>Lingerie</option>
+            <option>Nu artistique</option>
+            <option>Détail</option>
+            <option>Charme</option>
+            <option>Lingerie</option>
+            <option>Photo d'entreprise</option>
+          </select>
+        </div>
+        <button type="button" class="btn" ng-click="addModel()">Enregistrer</button>
+      </div>
+    </div>
+  </div>
+</div>

@@ -29,7 +29,11 @@ boiteApp.config(['$routeProvider', '$locationProvider', function($routeProvider,
     })
     .when('/inscription', {
       templateUrl: "views/inscription.html",
-      controller: "inscriptionCtrl"
+      controller: "signupCtrl"
+    })
+    .when('/update', {
+      templateUrl: "views/update.html",
+      controller: "updateCtrl"
     })
     .otherwise({
       redirectTo: "/"

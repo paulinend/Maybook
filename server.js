@@ -1,47 +1,37 @@
-// server.js
+'use strict';
 
-// modules =================================================
-var express        = require('express');
-var app            = express();
-var bodyParser     = require('body-parser');
+//global.config = require('./config/config.js');
+// L'entrée de notre application.
+// A chaque fois que je veux accéder à mon site il utilisera ce serveur pour traiter ma demande.
+// Express est le serveur http qui écoute les requêtes et y répond
+const express = require('express');
+const bodyParser = require('body-parser');
+const PORT = process.env.PORT || 3000;
+// Route est un bout de code qui va nous envoyer vers l'api ou le site selon notre besoin
+const routes = require('./routes.js');
 
-// configuration ===========================================
+// On déclare l'app
+const app = express();
 
-// config files
-var db = require('./config/db');
+app.use(express.static(__dirname + "/public"));
+app.use(bodyParser.json())
 
-// set our port
-var port = process.env.PORT || 8080;
-  
-// connect to our mongoDB database
-// (uncomment after you enter in your own credentials in config/db.js)
-// mongoose.connect(db.url);
 
-// get all data/stuff of the body (POST) parameters
-// parse application/json
-app.use(bodyParser.json());
+// On lui défini du middleware
+app.use(function(req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");// www.google.com monsite.com 143.45.78.23
+  res.header("Access-Control-Allow-Headers", "Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With");
+  next();
+});
 
-// parse application/vnd.api+json as json
-app.use(bodyParser.json({ type: 'application/vnd.api+json' }));
+//On défini ses routes
+app.use(routes);
 
-// parse application/x-www-form-urlencoded
-app.use(bodyParser.urlencoded({ extended: true }));
+app.post('/search.json', function (req, res) {
+  console.log(req.body);
+})
 
-// override with the X-HTTP-Method-Override header in the request. simulate DELETE/PUT
-app.use(methodOverride('X-HTTP-Method-Override'));
-
-// set the static files location /public/img will be /img for users
-app.use(express.static(__dirname + '/public'));
-
-// routes ==================================================
-require('./app/routes')(app); // configure our routes
-
-// start app ===============================================
-// startup our app at http://localhost:8080
-app.listen(port);
-
-// shoutout to the user
-console.log('Magic happens on port ' + port);
-
-// expose app
-exports = module.exports = app;
+// Et on la démarre
+app.listen(PORT, (err) => {
+  console.log(`listening on port ${PORT}`);
+});
