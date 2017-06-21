@@ -9,27 +9,30 @@ const bodyParser = require('body-parser');
 const PORT = process.env.PORT || 3000;
 // Route est un bout de code qui va nous envoyer vers l'api ou le site selon notre besoin
 const routes = require('./routes.js');
+const mongoose = require('mongoose');
 
 // On déclare l'app
 const app = express();
 
 app.use(express.static(__dirname + "/public"));
-app.use(bodyParser.json())
+
+mongoose.connect('mongodb://localhost:27017/paupau', (err) => {
+  if (err) return console.log(err);
+  console.log('connection to DB established')
+});
 
 
 // On lui défini du middleware
-app.use(function(req, res, next) {
-  res.header("Access-Control-Allow-Origin", "*");// www.google.com monsite.com 143.45.78.23
-  res.header("Access-Control-Allow-Headers", "Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With");
-  next();
+app.use((req, res, next) => {
+    		res.header('Access-Control-Allow-Origin', '*');
+    		res.header('Access-Control-Allow-Methods', 'GET,POST,DELETE,PUT');
+    		res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, x-access-token');
+    		next();
 });
 
 //On défini ses routes
 app.use(routes);
 
-app.post('/search.json', function (req, res) {
-  console.log(req.body);
-})
 
 // Et on la démarre
 app.listen(PORT, (err) => {

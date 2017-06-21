@@ -16,11 +16,21 @@ const TopModels = new Schema({
     unique: true,
     required: true
   },
-  hash: {
-    type: String,
-    unique: true,
-    required: true
-  }
+  username: { type: String,
+              unique: true,
+              required: true
+  },
+  name: { type: String },
+  lastname: { type: String },
+  age: { type: Number, min: 14, max: 99 },
+  taille: { type: Number },
+  poids: { type: Number },
+  pointure: { type: Number },
+  eyes: { type: String },
+  hairs: { type: String },
+  ethnicity: { type: String },
+  sexe: { type: String }
+
 });
 
 module.exports = TopModels;

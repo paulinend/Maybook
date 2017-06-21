@@ -3,6 +3,8 @@
 // Toutes les urls qui arrivent ici correspondent à www.site.com/api
 
 const {Router} = require('express');
+const multer  = require('multer');
+const upload = multer();
 const bodyParser = require('body-parser');
 
 // L'api récupère les controllers qui l'intéressent
@@ -36,7 +38,18 @@ apiRoutes.use(bodyParser.json());
 // apiRoutes.post('/login', auth.login);
 
 // USER CONTROLLER ROUTES
-apiRoutes.get('/topModels', topModels.find);
+apiRoutes
+  .get('/topModels', topModels.find)
+  .get('/topModels/:id', topModels.findOne)
+  .delete('/deleteModel/:id', topModels.deleteOne)
+  .post('/addModel', topModels.create)
+  .put('/updateOne/:id', topModels.updateOne)
+
+  // .post('/profile', upload.array(), function (req, res, next) {
+  //   // req.body contains the text fields
+  // })
+
+
 // apiRoutes.post('/topModels', auth.register);
 // apiRoutes.get('/topModels/restricted', auth.require_token, topModels.restricted);
 

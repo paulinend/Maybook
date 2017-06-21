@@ -19,9 +19,13 @@ boiteApp.config(['$routeProvider', '$locationProvider', function($routeProvider,
       templateUrl: "views/search.html",
       controller: "searchCtrl"
     })
-    .when('/perso/:name/:lastname', {
+    .when('/perso/:username', {
       templateUrl: "views/perso.html",
       controller: "persoCtrl"
+    })
+    .when('/persoUpdate/:username', {
+      templateUrl: "views/persoUpdate.html",
+      controller: "persoUpdateCtrl"
     })
     .when('/connexion', {
       templateUrl: "views/connexion.html",

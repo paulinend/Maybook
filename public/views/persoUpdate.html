@@ -1,0 +1,17 @@
+<div class="user-profile-container" ng-controller="persoUpdateCtrl">
+  <div class="profile-top">
+    <img src="{{user.photo}}" alt="{{user.name}}">
+    <div class="infos-user">
+      <input type="text" ng-model='user.name' ng-change='change'>
+      <input type="text" ng-model='user.lastname' ng-change='change'>
+      <input type="text" ng-model='user.age' ng-change='change'> ans
+      <input type="text" ng-model='user.taille' ng-change='change'> cm
+      <input type="text" ng-model='user.poids' ng-change='change'> kg
+      <input type="text" ng-model='user.pointure' ng-change='change'>
+      <input type="text" ng-model='user.eyes' ng-change='change'>
+      <input type="text" ng-model='user.hairs' ng-change='change'>
+      <input type="text" ng-model='user.ethnicity' ng-change='change'>
+    </div>
+    <button type="button" class="btn" ng-click="UpdateModel()">Save</button>
+  </div>
+</div>
