@@ -10,16 +10,9 @@
         <label for="example-text-input">Nom De Famille:</label>
         <input type="text" ng-model="mannequins.lastname">
         <label for="example-text-input">Mot De Passe:</label>
-        <input type="password">
-        <label for="example-text-input">Date De Naissance:</label>
-        <input type="date">
-        <form>
-          <input type= "radio" name="sexe" value="jour">Femme
-          <input type= "radio" name="sexe" value="nuit">Homme
-          <input type= "radio" name="sexe" value="nuit">Non-genré
-        </form>
+        <input ng-model="mannequins.pwd" type="password">
       </div>
-      <a><button type="button" class="btn" ng-click="addModel()">Save Modifications</button></a>
+      <a><button type="button" class="btn" ng-click="signup()">Save Modifications</button></a>
     </div>
   </div>
 </div>

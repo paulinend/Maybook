@@ -22,13 +22,15 @@ const TopModels = new Schema({
   },
   name: { type: String },
   lastname: { type: String },
-  age: { type: Number, min: 14, max: 99 },
-  taille: { type: Number },
-  poids: { type: Number },
-  pointure: { type: Number },
+  age: { type: String},
+  taille: { type: String },
+  poids: { type: String },
+  pointure: { type: String },
   eyes: { type: String },
   hairs: { type: String },
   ethnicity: { type: String },
+  xp: { type: String },
+  spe: { type: String },
   sexe: { type: String }
 
 });

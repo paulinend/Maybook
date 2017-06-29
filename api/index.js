@@ -16,6 +16,7 @@ const bodyParser = require('body-parser');
 // STEP 6
 // Require ton super nouveau controller topModels.js
 const topModels = require('./controllers/topmodels.js');
+const User = require('./controllers/auth.js');
 
 // Elle crée un nouveau routeur/embranchage rien que pour notre api
 const apiRoutes = new Router();
@@ -43,6 +44,9 @@ apiRoutes
   .get('/topModels/:id', topModels.findOne)
   .delete('/deleteModel/:id', topModels.deleteOne)
   .post('/addModel', topModels.create)
+  .post('/login', User.authenticate)
+  .get('/users', User.getUsers)
+  .post('/signup', User.signup)
   .put('/updateOne/:id', topModels.updateOne)
 
   // .post('/profile', upload.array(), function (req, res, next) {

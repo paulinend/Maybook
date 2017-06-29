@@ -7,7 +7,7 @@
 .profile-top {
   display: flex;
   width: 800px;
-  background: #E7E397;
+  background: rgba(255, 255, 255, 0.8);
 }
 .infos-user h1 {
   text-align: center;

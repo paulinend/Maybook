@@ -1,17 +1,154 @@
 <div class="user-profile-container" ng-controller="persoUpdateCtrl">
   <div class="profile-top">
     <img src="{{user.photo}}" alt="{{user.name}}">
-    <div class="infos-user">
-      <input type="text" ng-model='user.name' ng-change='change'>
-      <input type="text" ng-model='user.lastname' ng-change='change'>
-      <input type="text" ng-model='user.age' ng-change='change'> ans
-      <input type="text" ng-model='user.taille' ng-change='change'> cm
-      <input type="text" ng-model='user.poids' ng-change='change'> kg
-      <input type="text" ng-model='user.pointure' ng-change='change'>
-      <input type="text" ng-model='user.eyes' ng-change='change'>
-      <input type="text" ng-model='user.hairs' ng-change='change'>
-      <input type="text" ng-model='user.ethnicity' ng-change='change'>
+    <div class="infos-user persoUP">
+      <h1>Mettre à jour mon profile</h1>
+      <div class="form-group">
+      <form class="form">
+        <label for="example-text-input">Prénom:</label>
+        <input type="text" ng-model='user.name' ng-change='change'>
+      </form>
+      <form class="form">
+        <label for="example-text-input">Nom:</label>
+        <input type="text" ng-model='user.lastname' ng-change='change'>
+      </form>
+        <div class="form flex">
+          <label for="sel1">Âge:</label>
+          <select class="form-control" id="sel1" ng-model="user.age" ng-change='change'>
+            <option>Peu importe</option>
+            <option>De 16 à 20 ans</option>
+            <option>De 20 à 25 ans</option>
+            <option>De 26 à 30 ans</option>
+            <option>De 31 à 40 ans</option>
+            <option>De 40 à 50 ans</option>
+            <option>Plus de 50 ans</option>
+          </select>
+        </div>
+        <div class="form flex">
+          <label for="sel1">Taille:</label>
+          <select class="form-control" id="sel1" ng-model="user.taille" ng-change='change'>
+            <option>Peu importe</option>
+            <option>moins de 130cm</option>
+            <option>De 130cm à 150cm</option>
+            <option>De 151cm à 160cm</option>
+            <option>De 161cm à 170cm</option>
+            <option>De 171cm à 180cm</option>
+            <option>De 181cm à 190cm</option>
+            <option>De 191cm à 200cm</option>
+            <option>Plus de 200cm</option>
+          </select>
+        </div>
+        <div class="form flex">
+          <label for="sel1">Poids:</label>
+          <select class="form-control" id="sel1" ng-model="user.poids" ng-change='change'>
+            <option>Peu importe</option>
+            <option>moins de 30kg</option>
+            <option>De 31kg à 40kg</option>
+            <option>De 51kg à 60kg</option>
+            <option>De 61kg à 70kg</option>
+            <option>De 71kg à 80kg</option>
+            <option>De 81kg à 90kg</option>
+            <option>De 91kg à 100kg</option>
+            <option>De 101kg à 110kg</option>
+            <option>De 110kg à 120kg</option>
+            <option>De 120kg à 130kg</option>
+            <option>Plus de 140kg</option>
+          </select>
+        </div>
+        <div class="form flex">
+          <label for="sel1">Pointure</label>
+          <select class="form-control" id="sel1" ng-model="user.pointure" ng-change='change'>
+            <option>Peu importe</option>
+            <option>35</option>
+            <option>36</option>
+            <option>37</option>
+            <option>38</option>
+            <option>39</option>
+            <option>40</option>
+            <option>41</option>
+            <option>42</option>
+            <option>43</option>
+            <option>44</option>
+            <option>45</option>
+            <option>45+</option>
+          </select>
+        </div>
+        <div class="form flex">
+          <label for="sel1">Couleur des yeux:</label>
+          <select class="form-control" id="sel1" ng-model="user.eyes" ng-change='change'>
+            <option>Peu importe</option>
+            <option>Noirs</option>
+            <option>Marrons</option>
+            <option>Bleus</option>
+            <option>Verts</option>
+          </select>
+        </div>
+        <div class="form flex">
+          <label for="sel1">Cheveux:</label>
+          <select class="form-control" id="sel1" ng-model="user.hairs" ng-change='change'>
+            <option>Peu importe</option>
+            <option>Bruns</option>
+            <option>Chatains</option>
+            <option>Blonds</option>
+            <option>Roux</option>
+            <option>Gris</option>
+            <option>Blancs</option>
+            <option>Chauves</option>
+            <option>Colorés</option>
+          </select>
+        </div>
+        <div class="form flex">
+          <label for="sel1">Origine ethnique:</label>
+          <select class="form-control" id="sel1" ng-model="user.ethnicity" ng-change='change'>
+            <option>Peu importe</option>
+            <option>Afro-caraibéene</option>
+            <option>Européene</option>
+            <option>Méditénéréen</option>
+            <option>Arabe</option>
+            <option>Asiatique</option>
+            <option>Indien</option>
+            <option>Autre</option>
+          </select>
+        </div>
+        <div class="form flex">
+          <label for="sel1">Experience:</label>
+          <select class="form-control" id="sel1" ng-model="user.xp" ng-change='change'>
+            <option>Débutant</option>
+            <option>Amateur</option>
+            <option>Semi Pro</option>
+            <option>Pro</option>
+            <option>Passionné</option>
+            <option>Expérimenté</option>
+          </select>
+        </div>
+        <div class="form flex">
+          <label for="sel1">Spécialité photos:</label>
+          <select class="form-control" id="sel1" ng-model="user.spe">
+            <option>Glamour</option>
+            <option>Mode</option>
+            <option>Portrait</option>
+            <option>Sport</option>
+            <option>Nature</option>
+            <option>Mariage</option>
+            <option>Abstrait</option>
+            <option>Lingerie</option>
+            <option>Nu artistique</option>
+            <option>Détail</option>
+            <option>Charme</option>
+            <option>Lingerie</option>
+            <option>Photo d'entreprise</option>
+          </select>
+        </div>
+        <label for="sel1">Sexe:</label>
+        <form>
+          <input type="radio" name="gender" value="Male" ng-model="user.sexe"> Féminin
+          <input type="radio" name="gender" value="Female" ng-model="user.sexe"> Masculin
+          <input type="radio" name="gender" value="Other" ng-model="user.sexe"> Non-genré
+        </form>
+      </div>
+      <button type="button" class="btn" ng-click="addModel()"><a href="#/perso/{{user.username}}">Enregistrer</a></button>
+
+      <button type="button" class="btn" ng-click="UpdateModel()">Save</button>
     </div>
-    <button type="button" class="btn" ng-click="UpdateModel()">Save</button>
   </div>
 </div>

@@ -1,14 +1,14 @@
-<div class="connexion-page">
+<div class="connexion-page" ng-controller="loginCtrl">
   <div class="connexion-container">
     <div class="connexion">
       <h2>Connexion</h2>
       <div class="form">
         <label for="example-text-input">Adresse E-mail:</label>
-        <input type="text">
+        <input ng-model="mannequins.mail" type="text">
           <label for="example-text-input">Mot De Passe:</label>
-          <input type="password">
+          <input ng-model="mannequins.pwd" type="password">
       </div>
-      <a href="#/filtrage"><button type="button" class="btn">connexion</button></a>
+      <button ng-click="login()" type="button" class="btn">connexion</button>
       <p>Si vous n'avez pas d'identifiant, <a href="#/inscription">s'inscrire</a></p>
     </div>
   </div>

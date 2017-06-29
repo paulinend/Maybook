@@ -1,68 +1,85 @@
 'use strict';
 
-const jwt = require('jsonwebtoken');
-const bcrypt = require('bcrypt');
-const moment = require('moment');
-const TopModels = require('../../database').topmodels;
+const jwt = require('jwt-simple');
+const User = require('../../database').User;
 
-// Create a token for the user
-function generate_token (user) {
-  const payload = {
-      exp: moment().add(14, 'days').unix(),
-      iat: moment().unix(),
-      iss: user.mail,
-      sub : user.hash
-  }
-  console.log(global.config.APP_SECRET)
-  return jwt.sign(payload, global.config.APP_SECRET);
-}
 
-// Create a hash for the user
-function format (user) {
-  const salt = bcrypt.genSaltSync(10);
-  return {
-    mail: user.mail,
-    hash: bcrypt.hashSync(user.mail + user.pwd, salt)
-  }
-}
 
-const auth =  {
+exports.authenticate = function(req, res) {
+   User.findOne({
+     mail: req.body.mail
+   }, function(err, user) {
+     if (err) throw err;
 
-  register : (req, res) => {
-    const newTopmodel = new TopModels(format(req.body));
-    newTopmodel.save()
-    .then ( user => {
-      const token = generate_token(user);
-      res.send('Operation succeeded : \n' + token);
-    })
-    .catch ( err => {
-      // Handle "Missing paramater" or "User already exists" or "Server error" here
-      // depending on the error code.
-      res.send('Operation failed : \n' + err);
-    });
-  },
+     if (!user) {
+       res.send({success: false, msg: 'Authentication failed. User not found.'});
+     } else {
+       // check if password matches
+       user.comparePassword(req.body.pwd, function (err, isMatch) {
+         if (isMatch && !err) {
+           // if user is found and password is right create a token
+           const token = jwt.encode(user, 'coucou');
+           // return the information including token as JSON
+           res.json({success: true, token: 'JWT ' + token, user:user});
+         } else {
+           res.send({success: false, msg: 'Authentication failed. Wrong password.'});
+         }
+       });
+     }
+   });
+ };
 
-  login : (req, res) => {
-    Users.find({mail: req.body.mail})
-    .then( users => {
-      if ( users.length > 0 && bcrypt.compareSync(req.body.mail + req.body.pwd, users[0].hash)) {
-        const token = generate_token(users[0]);
-        res.send('Operation succeeded : \n' + token);
+ exports.createToken = function(req, res){
+   const token = jwt.encode(req.params.mail, config.secret);
+   res.json(token);
+ };
+
+ exports.getUsers = function(req, res){
+   User.find( function(err, users) {
+       if (err) throw err;
+
+       else {
+         res.json(users);
+       }
+   });
+ };
+
+exports.signup =  function(req, res) {
+  console.log(req.body);
+  let data = req.body;
+  data.token = jwt.encode(data.mail, 'coucou');
+  User.findOne({
+    email: data.mail
+  }, function(err, user) {
+    if (!user){
+      if (!data.mail || !data.pwd) {
+        res.json({success: false, msg: 'Please pass name and password.'});
+      } else {
+        const newUser = new User(data);
+        // save the user
+        newUser.save(function(err) {
+            if (err) {
+              return res.json({success: false, msg: 'email already exists.'});
+            }
+              return res.json({success: true, msg: 'Successful created new user.'});
+        });
       }
-    })
-    .catch( err => {
-      res.send('Operation failed : \n' + err);
-    });
-  },
+    } else {
+       res.json({success: false, msg: 'Email already used'});
+    }
+  });
+ };
 
-  require_token : (req, res, next) => {
-    const token = req.get('authorization');
-    if (!token) res.send('Authorization Required');
-    jwt.verify(token, global.config.APP_SECRET, (err, decoded) => {
-      if (err || decoded.exp < moment().unix()) res.send('Token expired');
-      else next();
-    });
+
+const getToken = function (headers) {
+  if (headers && headers.authorization) {
+    const parted = headers.authorization.split(' ');
+    if (parted.length === 2) {
+      return parted[1];
+    } else {
+      return null;
+    }
+  } else {
+    return null;
   }
-}
-
-module.exports = auth;
+};

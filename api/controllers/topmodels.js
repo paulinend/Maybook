@@ -58,6 +58,7 @@ const topModels  = {
       )
   },
   updateOne(req, res, next) {
+    console.log(req.body)
 		TopModels.findByIdAndUpdate(
 				{ _id: req.params.id },
 				{ $set: req.body },

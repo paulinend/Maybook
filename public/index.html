@@ -12,6 +12,7 @@
   <link rel="stylesheet" href="css/connexion.css">
   <link rel="stylesheet" href="css/filtrage.css">
   <link rel="stylesheet" href="css/perso.css">
+  <link rel="stylesheet" href="css/persoUpdate.css">
   <link rel="stylesheet" href="css/search.css">
   <link rel="stylesheet" href="css/homepage.css">
 
@@ -36,6 +37,9 @@
   <script type="text/javascript" src="js/controllers/connexionCtrl.js"></script>
   <script type="text/javascript" src="js/controllers/signupCtrl.js"></script>
   <script type="text/javascript" src="js/controllers/updateCtrl.js"></script>
+  <!-- SERVICES -->
+  <script type="text/javascript" src="js/services/authService.js"></script>
+
 </head>
 <body ng-app="boiteApp">
   <div class="container-principal">
@@ -44,8 +48,7 @@
       <ul>
         <li><a href="#">Home</a></li>
         <li><a href="#/filtrage">Mannequins</a></li>
-        <li><a href="#/connexion">Connexion</a></li>
-        <li><a href="#/update">Update</a></li>
+        <li><a href="#/persoUpdate/:username"><i class="fa fa-user fa-lg" aria-hidden="true"></i> Mon Compte</a></li>
       </ul>
     </div>
   </div>

@@ -1,4 +1,4 @@
-boiteApp.controller('persoUpdateCtrl', ['$scope', '$http', '$routeParams', function($scope, $http, $routeParams) {
+boiteApp.controller('persoUpdateCtrl', ['$scope', '$http', '$routeParams', '$location', function($scope, $http, $routeParams, $location) {
     var username = $routeParams.username;
     $http.get('http://localhost:3000/api/topModels').then(function(response){
       $scope.users = response.data;
@@ -12,7 +12,7 @@ boiteApp.controller('persoUpdateCtrl', ['$scope', '$http', '$routeParams', funct
       $scope.UpdateModel = function() {
         $http
           .put('http://localhost:3000/api/updateOne/' + $scope.user._id, $scope.user)
-          .then(response => console.log('Model updated', response), (badResponse) => console.log(badResponse))
+          .then(response => $location.path('/perso/' + $scope.user.username), (badResponse) => console.log(badResponse))
       };
       $scope.change = function() {
         $scope.user.name = $scope.name;

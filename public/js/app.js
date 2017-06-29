@@ -13,11 +13,7 @@ boiteApp.config(['$routeProvider', '$locationProvider', function($routeProvider,
     })
     .when('/filtrage', {
       templateUrl: "views/filtrage.html",
-      controller: 'filtrageCtrl'
-    })
-    .when('/search', {
-      templateUrl: "views/search.html",
-      controller: "searchCtrl"
+      controller: 'searchCtrl'
     })
     .when('/perso/:username', {
       templateUrl: "views/perso.html",
@@ -29,7 +25,7 @@ boiteApp.config(['$routeProvider', '$locationProvider', function($routeProvider,
     })
     .when('/connexion', {
       templateUrl: "views/connexion.html",
-      controller: "connexionCtrl"
+      controller: "loginCtrl"
     })
     .when('/inscription', {
       templateUrl: "views/inscription.html",
@@ -37,7 +33,18 @@ boiteApp.config(['$routeProvider', '$locationProvider', function($routeProvider,
     })
     .when('/update', {
       templateUrl: "views/update.html",
-      controller: "updateCtrl"
+      controller: "updateCtrl",
+      resolve:{
+       function(AuthService, $location){
+        const role = AuthService.userRole();
+        if (role === 'Utilisateur') {
+          return true;
+        }else{
+          $location.path('/');
+          return false;
+        }
+       }
+      }
     })
     .otherwise({
       redirectTo: "/"
