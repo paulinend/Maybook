@@ -1,6 +1,6 @@
 boiteApp.service("AuthService", function($q, $http) {
 
-  let LOCAL_TOKEN_KEY = 'AdopteAppTokenKey';
+  let LOCAL_TOKEN_KEY = 'MayBookAppTokenKey';
     let isAuthenticated = false;
     let authToken;
     let role = '';
@@ -59,7 +59,7 @@ boiteApp.service("AuthService", function($q, $http) {
     const login = (user) => {
        return $http.post('api/login', user).then(
         function(response){
-          if (response.data.msg === 'Authentication failed. Inactive account.') {
+          if (response.data.success === false) {
 
           } else if (response.data.success === true) {
             storeUserCredentials(response.data.token);
@@ -84,26 +84,6 @@ boiteApp.service("AuthService", function($q, $http) {
         );
     };
 
-    const getInfo = (user) => {
-     return $http.get('api/memberinfo').then(
-      function(response) {
-      return response;
-      }, function(error){
-       return error;
-      }
-     );
-    }
-
-    const getAllUser = () => {
-     return $http.get('api/users').then(
-      function(response) {
-      return response;
-      }, function(error){
-       return error;
-      }
-     );
-    }
-
     const logout = () => {
       destroyUserCredentials();
     };
@@ -117,7 +97,6 @@ boiteApp.service("AuthService", function($q, $http) {
       loadUserCredentials: loadUserCredentials,
       login: login,
       register: register,
-      getInfo: getInfo,
       getAllUser: getAllUser,
       logout: logout,
       clearLocalStorage: clearLocalStorage,

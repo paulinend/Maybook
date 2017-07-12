@@ -44,11 +44,12 @@
 <body ng-app="boiteApp">
   <div class="container-principal">
     <h1><a href="#">May' Book</a></h1>
-    <div class="menu-top">
+    <div class="menu-top" ng-controller="homeCtrl">
       <ul>
         <li><a href="#">Home</a></li>
         <li><a href="#/filtrage">Mannequins</a></li>
-        <li><a href="#/persoUpdate/:username"><i class="fa fa-user fa-lg" aria-hidden="true"></i> Mon Compte</a></li>
+        <li><a href="#/connexion"><i class="fa fa-user fa-lg" aria-hidden="true"></i> Mon Compte</a></li>
+        <li><a href="#/persoUpdate/{{user.username}}"><i class="fa fa-user fa-lg" aria-hidden="true"></i> Update Profil {{user.username}}</a></li>
       </ul>
     </div>
   </div>

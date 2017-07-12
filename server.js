@@ -6,7 +6,7 @@
 // Express est le serveur http qui écoute les requêtes et y répond
 const express = require('express');
 const bodyParser = require('body-parser');
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 8080;
 // Route est un bout de code qui va nous envoyer vers l'api ou le site selon notre besoin
 const routes = require('./routes.js');
 const mongoose = require('mongoose');

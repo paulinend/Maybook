@@ -4,7 +4,7 @@
 
 const {Router} = require('express');
 const multer  = require('multer');
-const upload = multer();
+const upload = multer()
 const bodyParser = require('body-parser');
 
 // L'api récupère les controllers qui l'intéressent
@@ -16,7 +16,7 @@ const bodyParser = require('body-parser');
 // STEP 6
 // Require ton super nouveau controller topModels.js
 const topModels = require('./controllers/topmodels.js');
-const User = require('./controllers/auth.js');
+const topModelsAuth = require('./controllers/auth.js');
 
 // Elle crée un nouveau routeur/embranchage rien que pour notre api
 const apiRoutes = new Router();
@@ -40,14 +40,20 @@ apiRoutes.use(bodyParser.json());
 
 // USER CONTROLLER ROUTES
 apiRoutes
+  .post('/upload/:title', (req, res) => {
+      upload(req, res, err => {
+          if (err) console.log(err);
+          res.status(200).send(req._filename);
+      });
+  })
   .get('/topModels', topModels.find)
   .get('/topModels/:id', topModels.findOne)
   .delete('/deleteModel/:id', topModels.deleteOne)
   .post('/addModel', topModels.create)
-  .post('/login', User.authenticate)
-  .get('/users', User.getUsers)
-  .post('/signup', User.signup)
-  .put('/updateOne/:id', topModels.updateOne)
+  .post('/login', topModelsAuth.authenticate)
+  .get('/users', topModelsAuth.getUsers)
+  .post('/signup', topModelsAuth.signup)
+  .put('/updateOne/:id',topModelsAuth.verifyToken, topModels.updateOne)
 
   // .post('/profile', upload.array(), function (req, res, next) {
   //   // req.body contains the text fields

@@ -1,12 +1,13 @@
 'use strict';
 
 const jwt = require('jwt-simple');
-const User = require('../../database').User;
+const TopModels = require('../../database').topModels;
+const encodeString = 'secret'
 
 
 
 exports.authenticate = function(req, res) {
-   User.findOne({
+   TopModels.findOne({
      mail: req.body.mail
    }, function(err, user) {
      if (err) throw err;
@@ -18,7 +19,7 @@ exports.authenticate = function(req, res) {
        user.comparePassword(req.body.pwd, function (err, isMatch) {
          if (isMatch && !err) {
            // if user is found and password is right create a token
-           const token = jwt.encode(user, 'coucou');
+           const token = jwt.encode(user.mail, encodeString);
            // return the information including token as JSON
            res.json({success: true, token: 'JWT ' + token, user:user});
          } else {
@@ -35,7 +36,7 @@ exports.authenticate = function(req, res) {
  };
 
  exports.getUsers = function(req, res){
-   User.find( function(err, users) {
+   topModels.find( function(err, users) {
        if (err) throw err;
 
        else {
@@ -47,15 +48,15 @@ exports.authenticate = function(req, res) {
 exports.signup =  function(req, res) {
   console.log(req.body);
   let data = req.body;
-  data.token = jwt.encode(data.mail, 'coucou');
-  User.findOne({
-    email: data.mail
+  data.token = jwt.encode(data.mail, encodeString);
+  TopModels.findOne({
+    mail: data.mail
   }, function(err, user) {
     if (!user){
       if (!data.mail || !data.pwd) {
         res.json({success: false, msg: 'Please pass name and password.'});
       } else {
-        const newUser = new User(data);
+        const newUser = new TopModels(data);
         // save the user
         newUser.save(function(err) {
             if (err) {
@@ -82,4 +83,19 @@ const getToken = function (headers) {
   } else {
     return null;
   }
+};
+
+exports.verifyToken = function(req, res, next) {
+  let token = getToken(req.headers);
+  TopModels.findOne({
+    mail: req.body.mail
+  }, function (err, user) {
+    const compareToken = jwt.encode(user.mail, encodeString);
+    if (compareToken === token) {
+      next()
+    } else {
+      res.send('Unauthorized')
+    }
+  }
+)
 };

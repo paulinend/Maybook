@@ -1,18 +1,17 @@
-<div class="user-profile-container" ng-controller="persoCtrl">
+<div class="model-profile-container" ng-controller="persoCtrl">
   <div class="profile-top">
-    <img src="{{user.photo}}" alt="{{user.name}}">
-    <div class="infos-user">
-      <p> <a href="#/"><i class="fa fa-times fa-2x" aria-hidden="true" ng-click="deleteModel()"></i></a>Supprimer profile</p>
-      <p> <a href="#/persoUpdate/{{user.username}}"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>Modifier le  profile</p>
-      <h1>{{user.name}} {{user.lastname}} <i class="{{user.icon}}" aria-hidden="true"></i></h1>
-      <p>Âge: <span>{{user.age}} ans</span></p>
-      <p>Taille: <span>{{user.taille}}cm</span></p>
-      <p>Poids: <span>{{user.poids}}kg</span></p>
-      <p>Pointure: <span>{{user.pointure}}</span></p>
-      <p>Couleur des yeux: <span>{{user.eyes}}</span></p>
-      <p>Couleur des cheveux: <span>{{user.hairs}}</span></p>
-      <p>Origine Ethnique: <span>{{user.ethnicity}}</span></p>
-      <p>Rentrer en contact avec {{user.name}} <i class="fa fa-envelope-o" aria-hidden="true"></i></p>
+    <img src="{{model.photo}}" alt="{{model.name}}">
+    <div class="infos-model">
+      <p ng-if="isCurrent"> <a href="#/persoUpdate/{{model.username}}"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>Modifier le  profile</p>
+      <h1>{{model.name}} {{model.lastname}} <i class="{{model.icon}}" aria-hidden="true"></i></h1>
+      <p>Âge: <span>{{model.age}} ans</span></p>
+      <p>Taille: <span>{{model.taille}}cm</span></p>
+      <p>Poids: <span>{{model.poids}}kg</span></p>
+      <p>Pointure: <span>{{model.pointure}}</span></p>
+      <p>Couleur des yeux: <span>{{model.eyes}}</span></p>
+      <p>Couleur des cheveux: <span>{{model.hairs}}</span></p>
+      <p>Origine Ethnique: <span>{{model.ethnicity}}</span></p>
+      <p>Rentrer en contact avec {{model.name}} <i class="fa fa-envelope-o" aria-hidden="true"></i></p>
       <i class="fa fa-chevron-down fa-2x" aria-hidden="true"></i>
     </div>
   </div>

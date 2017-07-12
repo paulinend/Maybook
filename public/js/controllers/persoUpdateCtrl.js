@@ -1,6 +1,6 @@
-boiteApp.controller('persoUpdateCtrl', ['$scope', '$http', '$routeParams', '$location', function($scope, $http, $routeParams, $location) {
+boiteApp.controller('persoUpdateCtrl', ['$scope', '$http', '$routeParams', '$location', '$rootScope', function($scope, $http, $routeParams, $location, $rootScope) {
     var username = $routeParams.username;
-    $http.get('http://localhost:3000/api/topModels').then(function(response){
+    $http.get('http://localhost:8080/api/topModels').then(function(response){
       $scope.users = response.data;
         $scope.user = _.find($scope.users, {
           'username': username
@@ -11,8 +11,21 @@ boiteApp.controller('persoUpdateCtrl', ['$scope', '$http', '$routeParams', '$loc
       });
       $scope.UpdateModel = function() {
         $http
-          .put('http://localhost:3000/api/updateOne/' + $scope.user._id, $scope.user)
-          .then(response => $location.path('/perso/' + $scope.user.username), (badResponse) => console.log(badResponse))
+          .put('http://localhost:8080/api/updateOne/' + $scope.user._id, $scope.user)
+          .then(response => {
+            console.log("this is response" , response.data);
+            localStorage.setItem('user' , angular.toJson(response.data));
+            $rootScope.model = response.data;
+          $location.path('/perso/' + $scope.user.username)
+          console.log(response)
+        }, (badResponse) => console.log(badResponse))
+
+      };
+      $scope.deleteModel = function() {
+        console.log($scope.user._id);
+        $http
+          .delete('http://localhost:8080/api/deleteModel/' + $scope.user._id)
+          .then(response => console.log('Model deleted', response), (badResponse) => console.log(badResponse))
       };
       $scope.change = function() {
         $scope.user.name = $scope.name;
@@ -24,5 +37,6 @@ boiteApp.controller('persoUpdateCtrl', ['$scope', '$http', '$routeParams', '$loc
         $scope.user.eyes = $scope.eyes;
         $scope.user.hairs = $scope.hairs;
         $scope.user.ethnicity = $scope.ethnicity;
-      }
+      };
+
 }]);

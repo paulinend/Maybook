@@ -1,7 +1,7 @@
 boiteApp.controller('updateCtrl', function($scope,$http){
   console.log("hello update from ctrl");
 
-  $http.get('http://localhost:3000/api/topModels').then(function(response){
+  $http.get('http://localhost:8080/api/topModels').then(function(response){
       $scope.users = response.data;
     },
       function(err) {
@@ -9,12 +9,12 @@ boiteApp.controller('updateCtrl', function($scope,$http){
     });
     $scope.addModel = function() {
       $http
-        .post('http://localhost:3000/api/addModel', $scope.mannequins)
+        .post('http://localhost:8080/api/addModel', $scope.mannequins)
         .then(response => console.log('GOOD', response), (badResponse) => console.log(badResponse))
     };
     $scope.deleteModel = function() {
       $http
-        .delete('http://localhost:3000/api/deleteModel', $scope.mannequins)
+        .delete('http://localhost:8080/api/deleteModel', $scope.mannequins)
         .then(response => console.log('Model deleted', response), (badResponse) => console.log(badResponse))
     };
 });

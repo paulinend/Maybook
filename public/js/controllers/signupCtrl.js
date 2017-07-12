@@ -6,12 +6,12 @@ boiteApp.controller('signupCtrl', function($scope,$http,AuthService, $location){
 
     $scope.addModel = function() {
       $http
-        .post('http://localhost:3000/api/addModel', $scope.mannequins)
+        .post('http://localhost:8080/api/addModel', $scope.mannequins)
         .then(response => console.log('GOOD', response), (badResponse) => console.log(badResponse))
     };
     $scope.deleteModel = function() {
       $http
-        .delete('http://localhost:3000/api/addModel', $scope.mannequins)
+        .delete('http://localhost:8080/api/addModel', $scope.mannequins)
         .then(response => console.log('Delete model', response), (badResponse) => console.log(badResponse))
     };
     $scope.signup = () => {

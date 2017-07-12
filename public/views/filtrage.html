@@ -152,7 +152,8 @@
     <div class="search-container">
       <div class="cardPage">
         <div class="card-checkbox" ng-repeat="user in users | filter:searchText">
-            <a class="card" href="#/perso/{{user.username}}">
+          <!-- <a class="card" href="#/perso/{{user.username}}"> -->
+            <a class="card" ng-click="goToProfile(user)">
               <div class="topCard">
                   <img src="{{user.photo}}" alt="{{user.name}}"></img>
               </div>
