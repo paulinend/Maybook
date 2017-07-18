@@ -84,6 +84,26 @@ boiteApp.service("AuthService", function($q, $http) {
         );
     };
 
+    const getInfo = (user) => {
+     return $http.get('api/memberinfo').then(
+      function(response) {
+      return response;
+      }, function(error){
+       return error;
+      }
+     );
+    }
+
+    const getAllUser = () => {
+     return $http.get('api/users').then(
+      function(response) {
+      return response;
+      }, function(error){
+       return error;
+      }
+     );
+    }
+
     const logout = () => {
       destroyUserCredentials();
     };
@@ -97,6 +117,7 @@ boiteApp.service("AuthService", function($q, $http) {
       loadUserCredentials: loadUserCredentials,
       login: login,
       register: register,
+      getInfo: getInfo,
       getAllUser: getAllUser,
       logout: logout,
       clearLocalStorage: clearLocalStorage,

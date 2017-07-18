@@ -35,6 +35,7 @@ const TopModels = new Schema({
   xp: { type: String },
   spe: { type: String },
   sexe: { type: String },
+  photo: { type: Array, default: [] },
   role: String
 
 });

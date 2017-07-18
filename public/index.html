@@ -18,6 +18,9 @@
 
   <!-- FONTS & ICONS -->
   <link href="https://fonts.googleapis.com/css?family=League+Script|Open+Sans" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Goudy+Bookletter+1911|Raleway" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Dancing+Script" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Josefin+Sans" rel="stylesheet">
   <script src="https://use.fontawesome.com/96b867d284.js"></script>
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.16.2/lodash.min.js"></script>
 
@@ -39,17 +42,19 @@
   <script type="text/javascript" src="js/controllers/updateCtrl.js"></script>
   <!-- SERVICES -->
   <script type="text/javascript" src="js/services/authService.js"></script>
+  <script type="text/javascript" src="js/services/fileupload.js"></script>
+  <!-- DIRECTIVES  -->
+  <script type="text/javascript" src="js/directives/filemodel.js"></script>
 
 </head>
-<body ng-app="boiteApp">
+<body ng-app="boiteApp" id="body">
   <div class="container-principal">
     <h1><a href="#">May' Book</a></h1>
     <div class="menu-top" ng-controller="homeCtrl">
       <ul>
-        <li><a href="#">Home</a></li>
         <li><a href="#/filtrage">Mannequins</a></li>
-        <li><a href="#/connexion"><i class="fa fa-user fa-lg" aria-hidden="true"></i> Mon Compte</a></li>
-        <li><a href="#/persoUpdate/{{user.username}}"><i class="fa fa-user fa-lg" aria-hidden="true"></i> Update Profil {{user.username}}</a></li>
+        <li><a href="#/connexion">Connexion</a></li>
+        <li><a href="#/persoUpdate/{{currentUser.username}}"><i class="fa fa-user fa-lg" aria-hidden="true"></i> Bonjour {{currentUser.name}}</a></li>
       </ul>
     </div>
   </div>

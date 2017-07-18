@@ -4,23 +4,20 @@
       <p>Zone de Recherche</p>
       <form class="button-search">
           <input type="text" ng-model="searchText" placeholder="Model, name..." class="searching" />
-          <a href="#/search">
-              <input type="submit" value="" class="empty"><i class="fa fa-search fa-2x" aria-hidden="true"></i></input>
-          </a>
       </form>
     </div>
     <div class="form-group">
       <div class="form flex">
         <label for="sel1">Sexe</label>
-        <select class="form-control" id="sel1">
+        <select class="form-control" id="sel1" ng-model="user.sexe">
           <option>Peu importe</option>
           <option>Féminin</option>
           <option>Masculin</option>
         </select>
       </div>
       <div class="form flex">
-        <label for="sel1">Âge:</label>
-        <select class="form-control" id="sel1">
+        <label for="sel1">Âge</label>
+        <select class="form-control" id="sel1" ng-model="user.age">
           <option>Peu importe</option>
           <option>De 16 à 20 ans</option>
           <option>De 20 à 25 ans</option>
@@ -31,8 +28,8 @@
         </select>
       </div>
       <div class="form flex">
-        <label for="sel1">Taille:</label>
-        <select class="form-control" id="sel1">
+        <label for="sel1">Taille</label>
+        <select class="form-control" id="sel1" ng-model="user.taille">
           <option>Peu importe</option>
           <option>moins de 130cm</option>
           <option>De 130cm à 150cm</option>
@@ -45,8 +42,8 @@
         </select>
       </div>
       <div class="form flex">
-        <label for="sel1">Poids:</label>
-        <select class="form-control" id="sel1">
+        <label for="sel1">Poids</label>
+        <select class="form-control" id="sel1" ng-model="user.poids">
           <option>Peu importe</option>
           <option>moins de 30kg</option>
           <option>De 31kg à 40kg</option>
@@ -63,7 +60,7 @@
       </div>
       <div class="form flex">
         <label for="sel1">Pointure</label>
-        <select class="form-control" id="sel1">
+        <select class="form-control" id="sel1" ng-model="user.pointure">
           <option>Peu importe</option>
           <option>35</option>
           <option>36</option>
@@ -80,8 +77,8 @@
         </select>
       </div>
       <div class="form flex">
-        <label for="sel1">Couleur des yeux:</label>
-        <select class="form-control" id="sel1">
+        <label for="sel1">Couleur des yeux</label>
+        <select class="form-control" id="sel1" ng-model="user.eyes">
           <option>Peu importe</option>
           <option>Noirs</option>
           <option>Marrons</option>
@@ -90,8 +87,8 @@
         </select>
       </div>
       <div class="form flex">
-        <label for="sel1">Cheveux:</label>
-        <select class="form-control" id="sel1">
+        <label for="sel1">Cheveux</label>
+        <select class="form-control" id="sel1" ng-model="user.hairs">
           <option>Peu importe</option>
           <option>Bruns</option>
           <option>Chatains</option>
@@ -104,8 +101,8 @@
         </select>
       </div>
       <div class="form flex">
-        <label for="sel1">Origine ethnique:</label>
-        <select class="form-control" id="sel1">
+        <label for="sel1">Origine ethnique</label>
+        <select class="form-control" id="sel1" ng-model="user.ethnicity">
           <option>Peu importe</option>
           <option>Afro-caraibéene</option>
           <option>Européene</option>
@@ -117,8 +114,8 @@
         </select>
       </div>
       <div class="form flex">
-        <label for="sel1">Experience:</label>
-        <select class="form-control" id="sel1">
+        <label for="sel1">Experience</label>
+        <select class="form-control" id="sel1" ng-model="user.xp">
           <option>Débutant</option>
           <option>Amateur</option>
           <option>Semi Pro</option>
@@ -128,8 +125,8 @@
         </select>
       </div>
       <div class="form flex">
-        <label for="sel1">Spécialité photos:</label>
-        <select class="form-control" id="sel1">
+        <label for="sel1">Spécialité photos</label>
+        <select class="form-control" id="sel1" ng-model="user.spe">
           <option>Glamour</option>
           <option>Mode</option>
           <option>Portrait</option>

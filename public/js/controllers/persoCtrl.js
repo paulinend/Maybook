@@ -20,6 +20,10 @@ boiteApp.controller('persoCtrl', ['$scope', '$http', '$routeParams', '$rootScope
       function(err) {
         console.log("Error");
       });
-    }
+    };
+    $http.get("js/search.json")
+        .then(function (response) {
+            $scope.img = response.data.mannequins;
+          })
 
 }]);

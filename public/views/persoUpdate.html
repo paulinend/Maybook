@@ -1,6 +1,8 @@
 <div class="user-profile-container" ng-controller="persoUpdateCtrl">
-  <div class="profile-top">
-    <img src="{{user.photo}}" alt="{{user.name}}">
+  <div class="profile-top update-container">
+    <div class="infos-update-img">
+      <img src="https://monicacph.files.wordpress.com/2012/04/amira1.jpg" alt="{{user.name}}">
+    </div>
     <div class="infos-user persoUP">
       <h1>Mettre à jour mon profile</h1>
       <div class="form-group">
@@ -11,6 +13,9 @@
       <form class="form">
         <label for="example-text-input">Nom:</label>
         <input type="text" ng-model='user.lastname' ng-change='change'>
+      </form>
+      <form>
+        <input type = "file" file-model = "myFile"/>
       </form>
         <div class="form flex">
           <label for="sel1">Âge:</label>
@@ -141,15 +146,15 @@
         </div>
         <label for="sel1">Sexe:</label>
         <form>
-          <input type="radio" name="gender" value="Male" ng-model="user.sexe"> Féminin
-          <input type="radio" name="gender" value="Female" ng-model="user.sexe"> Masculin
+          <input type="radio" name="gender" value="Male" ng-model="user.sexe"> Masculin
+          <input type="radio" name="gender" value="Female" ng-model="user.sexe"> Féminin
           <input type="radio" name="gender" value="Other" ng-model="user.sexe"> Non-genré
         </form>
       </div>
       <p> <a href="#/"><i class="fa fa-times fa-2x" aria-hidden="true" ng-click="deleteModel()"></i></a>Supprimer profile</p>
 
 
-      <button type="button" class="btn" ng-click="UpdateModel()">Save</button>
+      <button type="button" class="btn" ng-click="UpdateModel(); uploadFile()">Save</button>
     </div>
   </div>
 </div>

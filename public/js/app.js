@@ -1,6 +1,13 @@
 var boiteApp = angular.module('boiteApp', [
   'ngRoute'
-]);
+])
+.run(function($rootScope, $http, $routeParams) {
+    $rootScope.userTest = {'firstName': 'Maurice', 'lastName': 'Moss' };
+    $rootScope.currentUser = JSON.parse(localStorage.getItem('user'));
+
+    console.log($rootScope.currentUser);
+
+  });
 
 // boiteApp.config(['$rootScope', function($rootScope) {
 //   $rootScope.routeParams = {
@@ -14,10 +21,6 @@ boiteApp.config(['$routeProvider', '$locationProvider', function($routeProvider,
   $locationProvider.hashPrefix("");
   $routeProvider
     .when('/', {
-      templateUrl: "views/homepage.html",
-      controller: 'homeCtrl'
-    })
-    .when('/filtrage', {
       templateUrl: "views/filtrage.html",
       controller: 'searchCtrl'
     })
@@ -47,7 +50,7 @@ boiteApp.config(['$routeProvider', '$locationProvider', function($routeProvider,
        function(AuthService, $location){
         const role = AuthService.userRole();
         if (role === 'Utilisateur') {
-          $location.path('/update');
+          $location.path('/filtrage');
           return true;
         }
        }
@@ -78,24 +81,10 @@ boiteApp.config(['$routeProvider', '$locationProvider', function($routeProvider,
 
 }]);
 // // create the controller and inject Angular's $scope
-// boiteApp.controller('homeCtrl', function($scope) {
-//
-//     // create a message to display in our view
-//     $scope.message = 'Everyone come and see how good I look!';
-// });
 
 boiteApp.controller('homeCtrl', function($scope,$http,$routeParams){
   $scope.message = 'Everyone come and see how good I look!';
   // console.log($scope.user._id);
 
-  var username = $routeParams.username;
-  $http.get('http://localhost:8080/api/topModels').then(function(response){
-    $scope.users = response.data;
-      $scope.user = _.find($scope.users, {
-        'username': username
-      });
-    },
-    function(err) {
-      console.log("Error");
-    });
+
 });

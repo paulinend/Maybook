@@ -3,9 +3,15 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 400px;
 }
 
 .profile-top button {
   height: 40px;
+}
+.infos-update-img {
+  margin-top: 120px;
+}
+.update-container {
+  display: flex;
+  justify-content: space-around;
 }

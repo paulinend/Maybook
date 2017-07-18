@@ -1,5 +1,6 @@
-body {
-  background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)),url(../img/clem.jpg) no-repeat center/cover;
+#body {
+background-color: #E3DFDB;
+font-family: 'Josefin Sans', Helvetica, Arial, sans-serif;
 }
 
 .shadow {box-shadow: rgba(0, 0, 0, 0.2) 0px 1px 5px 0px, rgba(0, 0, 0, 0.137255) 0px 2px 2px 0px, rgba(0, 0, 0, 0.117647) 0px 3px 1px -2px;}
@@ -7,12 +8,12 @@ body {
   text-align: center;
   font-family: 'League Script', cursive;
   font-weight: bold;
-  font-size: 70px;
-  color: #fff;
+  font-size: 60px;
+  color: #222;
 }
 .container-principal h1 a {
   text-decoration: none;
-  color: #fff;
+  color: #222;
 }
 .container-principal .menu-top ul {
   display: flex;
@@ -22,14 +23,14 @@ body {
 }
  a {
   text-decoration: none;
-  color: #fff;
+  color: #222;
 }
 
 .btn{
   font-weight: 500;
   font-size: 12px;
   letter-spacing: 1px;
-  background-color: #22d2ad;
+  background-color: #CCA6A3;
   color: #fff;
   text-align: center;
   width: 160px;
@@ -42,4 +43,14 @@ body {
 
 .btn i {
   margin-left: 12px;
+}
+.menu-top {
+  /*margin-top: 50px;*/
+}
+.menu-top li a{
+  color: #222;
+  text-decoration: none;
+  font-size: 20px;
+  font-family: 'Dancing Script', Georgia, Times, serif;
+	line-height: 60px;
 }

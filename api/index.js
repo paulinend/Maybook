@@ -40,7 +40,7 @@ apiRoutes.use(bodyParser.json());
 
 // USER CONTROLLER ROUTES
 apiRoutes
-  .post('/upload/:title', (req, res) => {
+  .post('/upload/:id', (req, res) => {
       upload(req, res, err => {
           if (err) console.log(err);
           res.status(200).send(req._filename);

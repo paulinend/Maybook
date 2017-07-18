@@ -1,4 +1,4 @@
-boiteApp.controller('persoUpdateCtrl', ['$scope', '$http', '$routeParams', '$location', '$rootScope', function($scope, $http, $routeParams, $location, $rootScope) {
+boiteApp.controller('persoUpdateCtrl', ['$scope', 'fileUpload', '$http', '$routeParams', '$location', '$rootScope', function($scope, fileUpload, $http, $routeParams, $location, $rootScope) {
     var username = $routeParams.username;
     $http.get('http://localhost:8080/api/topModels').then(function(response){
       $scope.users = response.data;
@@ -37,6 +37,15 @@ boiteApp.controller('persoUpdateCtrl', ['$scope', '$http', '$routeParams', '$loc
         $scope.user.eyes = $scope.eyes;
         $scope.user.hairs = $scope.hairs;
         $scope.user.ethnicity = $scope.ethnicity;
+        $scope.user.photoID = $scope.photoID;
+      };
+
+      $scope.uploadFile = function(){
+        var file = $scope.myFile;
+        console.log('file is ' );
+        // console.dir(file);
+        var uploadUrl = 'http://localhost:8080/api/upload/';
+        fileUpload.uploadFileToUrl(file, uploadUrl);
       };
 
 }]);

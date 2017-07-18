@@ -1,11 +1,12 @@
 .filtrage-container {
   display: flex;
   justify-content: space-between;
+  margin: 20px;
 }
 
 #search-zone {
-  background-color: lightgrey;
-  min-width: 350px;
+  background-color: #fff;
+  min-width: 330px;
 }
 
 .search-head {border-bottom: 2px solid black;}
@@ -54,9 +55,13 @@ padding: 8px;
 }
 .form-group label {
   width: 150px;
-  /*margin-right: 20px;*/
+  margin-top: 10px;
 }
 
 .form-group:not(label)  {
+  text-align: center;
+}
+
+.no-models {
   text-align: center;
 }
